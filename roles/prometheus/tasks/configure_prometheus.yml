@@ -1,0 +1,17 @@
+---
+- name: Copy Prometheus configuration file
+  copy:
+    src: files/prometheus.yml
+    dest: /etc/prometheus/prometheus.yml
+  notify: Reload Prometheus
+  become: yes
+
+- name: Create necessary directories
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - /etc/prometheus
+    - /var/lib/prometheus
+  become: yes
+

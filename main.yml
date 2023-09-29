@@ -1,14 +1,22 @@
 ---
 - name: Deploy Prometheus, Node Exporter, ElasticSearch, and FluentBit
-  hosts: all
+  hosts: localhost
   become: yes  # Use sudo for privilege escalation if needed
 
   tasks:
-    - name: Run uname -a command
-      command: uname -a
+    - name: Turn off d SELINUX
+      command: setenforce 0
+#    - name: Turn off firewalld
+#      command: 
   
-  #roles:
-  #  - prometheus_role
-  #  - node_exporter_role
-  #  - elasticsearch_kibana_role
-  #  - fluentbit_role
+  roles:
+    - prereq
+    - prometheus
+    - node_exporter
+#    - elasticsearch_kibana
+#    - fluentbit
+  handlers:
+    - name: Reload Prometheus
+      systemd:
+        name: prometheus
+        state: reloaded

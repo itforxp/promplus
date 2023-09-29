@@ -1,0 +1,12 @@
+---
+- name: Install Node Exporter with dnf
+  dnf:
+    name: node_exporter
+    state: present
+
+- name: Start and enable Node Exporter service
+  systemd:
+    name: node_exporter
+    enabled: yes
+    state: started
+

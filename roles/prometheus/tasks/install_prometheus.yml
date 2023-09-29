@@ -1,0 +1,7 @@
+---
+- name: Install Prometheus
+  dnf:
+    name: prometheus
+    state: present  # You can adapt this based on your package manager
+  become: yes
+
