@@ -1,0 +1,14 @@
+---
+- name: Deploy Prometheus, Node Exporter, ElasticSearch, and FluentBit
+  hosts: all
+  become: yes  # Use sudo for privilege escalation if needed
+
+  tasks:
+    - name: Run uname -a command
+      command: uname -a
+  
+  #roles:
+  #  - prometheus_role
+  #  - node_exporter_role
+  #  - elasticsearch_kibana_role
+  #  - fluentbit_role
