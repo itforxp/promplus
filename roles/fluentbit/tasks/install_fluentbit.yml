@@ -1,0 +1,6 @@
+---
+- name: Install Fluentbit
+  dnf:
+    name: fluent-bit
+    state: present  
+  become: yes

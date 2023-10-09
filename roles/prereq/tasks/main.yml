@@ -7,3 +7,11 @@
     gpgcheck: no
     enabled: yes
 
+- name: Install fluentbit repo
+  command: rpm -ivh https://packages.fluentbit.io/centos/8/fluentbit_repo.x86_64.rpm
+  async: 300
+  poll: 0
+  args:
+    chdir: /tmp  # You can specify a different directory if needed
+  become: yes
+

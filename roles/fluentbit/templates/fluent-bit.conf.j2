@@ -1,0 +1,20 @@
+[SERVICE]
+    Flush        1
+    Daemon       Off
+
+[INPUT]
+    Name         systemd
+    Tag          journald
+    Systemd_Filter _TRANSPORT=kernel;_TRANSPORT=syslog
+
+[FILTER]
+    Name         record_modifier
+    Match        journald
+    Record       scrubbed_message "This log has been scrubbed for privacy."
+
+[OUTPUT]
+    Name         es
+    Match        *
+    Host         your_elasticsearch_host
+    Port         9200
+    Index        fluentbit

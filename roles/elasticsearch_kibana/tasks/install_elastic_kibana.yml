@@ -1,0 +1,17 @@
+---
+- name: Install Elasticsearch RPM
+  command: rpm -ivh https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.9.2-x86_64.rpm
+  async: 300
+  poll: 0
+  args:
+    chdir: /tmp  # You can specify a different directory if needed
+  become: yes
+
+- name: Install Kibana RPM
+  command: rpm -ivh https://artifacts.elastic.co/downloads/kibana/kibana-7.9.2-x86_64.rpm
+  async: 300
+  poll: 0
+  args:
+    chdir: /tmp  # You can specify a different directory if needed
+  become: yes
+

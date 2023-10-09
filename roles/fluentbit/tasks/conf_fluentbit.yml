@@ -1,0 +1,30 @@
+---
+- name: Copy Fluent Bit configuration file
+  copy:
+    src: fluent-bit.conf
+    dest: /etc/fluent-bit/fluent-bit.conf
+    owner: root
+    group: root
+    mode: '0644'
+  become: yes
+  notify: Restart Fluent Bit
+
+- name: Create Fluent Bit configuration file
+  template:
+    src: templates/fluent-bit.conf.j2
+    dest: /etc/fluent-bit/fluent-bit.conf
+  become: yes
+  notify: Restart Fluent Bit
+
+- name: Ensure Fluent Bit systemd service is enabled and started
+  systemd:
+    name: fluent-bit
+    enabled: yes
+    state: started
+  become: yes
+
+- name: Restart Fluent Bit
+  systemd:
+    name: fluent-bit
+    state: restarted
+  become: yes

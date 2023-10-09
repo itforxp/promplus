@@ -1,0 +1,3 @@
+---
+- include_tasks: install_elastic_kibana.yml
+- include_tasks: start_elastic_kibana.yml 

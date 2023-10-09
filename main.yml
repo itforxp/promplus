@@ -13,7 +13,7 @@
     - prereq
     - prometheus
     - node_exporter
-#    - elasticsearch_kibana
+    - elasticsearch_kibana
 #    - fluentbit
   handlers:
     - name: Reload Prometheus

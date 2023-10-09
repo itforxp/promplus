@@ -9,4 +9,4 @@
     name: node_exporter
     enabled: yes
     state: started
-
+  notify: Reload Prometheus
